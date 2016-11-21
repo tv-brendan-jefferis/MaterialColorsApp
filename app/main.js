@@ -216,27 +216,27 @@ function writePrefs() {
 
 
 function checkForAppUpdates() {
-  let packageInfo = require('./package.json');
-
-  let query = {
-    version: app.getVersion(),
-    bundleId: packageInfo.appBundleId
-  };
-
-  let qs = Object.keys(query)
-      .map(k => k + '=' + encodeURIComponent(query[k]))
-      .join('&');
-
-  autoUpdater.setFeedURL(UPDATE_FEED_URL + '?' + qs);
-  autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName, releaseDate, updateURL) => {
-    mainWindow.webContents.send('update-downloaded', releaseName);
-    electron.ipcMain.on('install-update', () => autoUpdater.quitAndInstall());
-  });
-  autoUpdater.on('error', error => {
-    console.error('Error updating: ' + error);
-    // electron.dialog.showErrorBox('error', error.toString());
-  });
-  autoUpdater.checkForUpdates();
+  // let packageInfo = require('./package.json');
+  //
+  // let query = {
+  //   version: app.getVersion(),
+  //   bundleId: packageInfo.appBundleId
+  // };
+  //
+  // let qs = Object.keys(query)
+  //     .map(k => k + '=' + encodeURIComponent(query[k]))
+  //     .join('&');
+  //
+  // autoUpdater.setFeedURL(UPDATE_FEED_URL + '?' + qs);
+  // autoUpdater.on('update-downloaded', (event, releaseNotes, releaseName, releaseDate, updateURL) => {
+  //   mainWindow.webContents.send('update-downloaded', releaseName);
+  //   electron.ipcMain.on('install-update', () => autoUpdater.quitAndInstall());
+  // });
+  // autoUpdater.on('error', error => {
+  //   console.error('Error updating: ' + error);
+  //   // electron.dialog.showErrorBox('error', error.toString());
+  // });
+  // autoUpdater.checkForUpdates();
 }
 
 
